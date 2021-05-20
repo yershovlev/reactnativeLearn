@@ -49,17 +49,6 @@ const AppNavigator = () => {
           ),
         }}
       />
-
-      <Tab.Screen
-        name="Test"
-        component={TestRedux}
-        options={{
-          tabBarLabel: "Account",
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
-      />
     </Tab.Navigator>
   );
 };

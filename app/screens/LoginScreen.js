@@ -1,9 +1,17 @@
 import React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Text } from "react-native";
 import * as Yup from "yup";
+import { useSelector, useDispatch } from "react-redux";
 
 import Screen from "../component/Screen";
-import { AppForm, AppFormField, SubmitButton } from "../component/forms";
+import {
+  AppForm,
+  AppFormField,
+  ErrorMessage,
+  SubmitButton,
+} from "../component/forms";
+import { loginAction } from "../store/actions/authActions";
+import { getListings } from "../store/actions/listingActions";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -11,13 +19,27 @@ const validationSchema = Yup.object().shape({
 });
 
 function LoginScreen(props) {
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ email, password }) => {
+    dispatch(loginAction(email, password));
+  };
+
+  const userLogedin = useSelector((state) => state.login);
+
   return (
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
 
+      {typeof userLogedin === "boolean" && (
+        <ErrorMessage
+          error="Invalid username or password"
+          visible={!userLogedin}
+        />
+      )}
       <AppForm
         initialValues={{ email: "", password: "" }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => handleSubmit(values)}
         validationSchema={validationSchema}
       >
         <AppFormField

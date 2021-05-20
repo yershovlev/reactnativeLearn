@@ -1,10 +1,15 @@
-import { GET_LISTINGS, ADD_LISTING } from "../actions/actionTypes";
+import {
+  GET_LISTINGS,
+  ADD_LISTING,
+  LOGIN,
+  LOGOUT,
+} from "../actions/actionTypes";
 
 const initialState = {
   listings: new Map(),
 };
 
-function listingReducer(state = { ...initialState }, action) {
+function reducer(state = { ...initialState }, action) {
   switch (action.type) {
     case GET_LISTINGS:
       return { ...state, listings: action.payload };
@@ -12,9 +17,15 @@ function listingReducer(state = { ...initialState }, action) {
       state.listings.set(action.payload.id, action.payload);
       return state;
     }
+    case LOGIN: {
+      return { ...state, login: action.payload };
+    }
+    case LOGOUT: {
+      return { ...state, login: action.payload };
+    }
     default:
       return state;
   }
 }
 
-export default listingReducer;
+export default reducer;

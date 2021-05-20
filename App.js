@@ -29,12 +29,13 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import { store } from "./app/store/store";
 
 import { Provider } from "react-redux";
+import BaseNavigator from "./app/navigation/BaseNavigator";
 
 export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer theme={navigationTheme}>
-        <AppNavigator />
+        <BaseNavigator />
       </NavigationContainer>
     </Provider>
   );

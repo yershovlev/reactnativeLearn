@@ -18,11 +18,13 @@ function WelcomeScreen({ navigation }) {
         <Text style={styles.logoText}>Sell what you don't need</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <MainButton title="login" onPress={() => routes.LOGIN} />
+        <MainButton
+          title="login"
+          onPress={() => navigation.navigate(routes.LOGIN)}
+        />
         <MainButton
           title="register"
-          color={colors.secondary}
-          onPress={() => routes.REGISTER}
+          onPress={() => navigation.navigate(routes.REGISTER)}
         />
       </View>
     </ImageBackground>

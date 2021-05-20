@@ -7,7 +7,6 @@ import colors from "../config/colors";
 import Card from "../component/Card";
 import Screen from "../component/Screen";
 import routes from "../navigation/routes";
-import listingsApi from "../api/listings";
 import { getListings } from "../store/actions/listingActions";
 
 function ListingsScreen({ navigation }) {

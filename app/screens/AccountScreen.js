@@ -6,6 +6,9 @@ import ListItem from "../component/ListItem";
 import ListItemSeparatorComponent from "../component/ListItemSeparator";
 import colors from "../config/colors";
 import Icon from "../component/Icon";
+import { logout } from "../store/actions/authActions";
+
+import { useSelector, useDispatch } from "react-redux";
 
 const menuItems = [
   {
@@ -28,6 +31,13 @@ const menuItems = [
 ];
 
 function AccountScreen({ navigation }) {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    console.log("logout");
+    dispatch(logout());
+  };
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
@@ -59,6 +69,7 @@ function AccountScreen({ navigation }) {
       <ListItem
         title="Log Out"
         IconComponent={<Icon name="logout" backgroundColor="#ffe66d" />}
+        onPress={handleLogout}
       />
     </Screen>
   );
