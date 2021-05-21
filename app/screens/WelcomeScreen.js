@@ -6,16 +6,16 @@ import MainButton from "../component/MainButton";
 import routes from "../navigation/routes";
 
 function WelcomeScreen({ navigation }) {
-  let file = require("../assets/background.jpg");
+  let file = require("../assets/backgroundLogos.jpg");
 
   return (
-    <ImageBackground style={styles.background} source={file} blurRadius={2}>
+    <ImageBackground style={styles.background} source={file} blurRadius={5}>
       <View style={styles.logoContainer}>
         <Image
-          source={require("../assets/logo-red.png")}
+          source={require("../assets/beerLogo.png")}
           style={styles.logoImg}
         />
-        <Text style={styles.logoText}>Sell what you don't need</Text>
+        <Text style={styles.logoText}>Drink more beer!</Text>
       </View>
       <View style={styles.buttonContainer}>
         <MainButton
@@ -49,11 +49,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   logoImg: {
-    width: 100,
-    height: 100,
+    width: 130,
+    height: 200,
   },
   logoText: {
-    fontSize: 18,
+    fontSize: 22,
+    color: colors.dark,
     fontWeight: "600",
     paddingVertical: 20,
   },

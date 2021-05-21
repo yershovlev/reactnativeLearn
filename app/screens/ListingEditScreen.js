@@ -14,7 +14,7 @@ import {
 import CategoryPickerItemComponent from "../component/CategoryPickerItemComponent";
 import Screen from "../component/Screen";
 import { useSelector, useDispatch } from "react-redux";
-import { addListing } from "../store/actions/listingActions";
+import { addListing, getListings } from "../store/actions/listingActions";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -26,40 +26,40 @@ const validationSchema = Yup.object().shape({
 
 const categories = [
   {
-    label: "Furniture",
+    label: "Lager",
     value: 1,
     backgroundColor: "red",
-    icon: "email",
+    icon: "glass-mug-variant",
   },
   {
-    label: "Clothing",
+    label: "Ale",
     value: 2,
     backgroundColor: "green",
-    icon: "email",
+    icon: "glass-mug",
   },
   {
-    label: "Camera",
+    label: "Porter",
     value: 3,
     backgroundColor: "blue",
-    icon: "email",
+    icon: "glass-stange",
   },
   {
-    label: "Furniture 2",
+    label: "Stout",
     value: 4,
     backgroundColor: "green",
-    icon: "email",
+    icon: "glass-flute",
   },
   {
-    label: "Clothing",
+    label: "Pale Ale",
     value: 5,
     backgroundColor: "blue",
-    icon: "email",
+    icon: "glass-stange",
   },
   {
-    label: "Camera",
+    label: "Pilsner",
     value: 6,
     backgroundColor: "red",
-    icon: "email",
+    icon: "glass-mug-variant",
   },
 ];
 
@@ -71,6 +71,7 @@ function ListingEditScreen() {
 
   const handleSubmit = async (values) => {
     dispatch(addListing({ ...values, location }));
+    dispatch(getListings());
     alert("Success");
   };
 

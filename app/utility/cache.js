@@ -23,7 +23,7 @@ const get = async (key) => {
     } else {
       const now = moment(Date.now());
       const storedTime = moment(item.timestamp);
-      if (now.diff(storedTime, "minutes") > 5) {
+      if (now.diff(storedTime, "milliseconds") > 100) {
         await AsyncStorage.removeItem(key);
         return null;
       }

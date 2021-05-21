@@ -29,7 +29,7 @@ function LoginScreen(props) {
 
   return (
     <Screen style={styles.container}>
-      <Image style={styles.logo} source={require("../assets/logo-red.png")} />
+      <Image style={styles.logo} source={require("../assets/beerLogo.png")} />
 
       {typeof userLogedin === "boolean" && (
         <ErrorMessage
@@ -72,9 +72,9 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 80,
-    height: 80,
+    height: 130,
     alignSelf: "center",
-    marginTop: 50,
+    marginTop: 20,
     marginBottom: 20,
   },
 });
